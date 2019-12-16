@@ -37,9 +37,9 @@ namespace Cars.EntityFramework
             User user;
             using (CarsContext car = new CarsContext())
             {
-                //user = context.Users.Where(u => login == u.Login).FirstOrDefault();
+                user = context.Users.Where(u => login == u.Login).FirstOrDefault();
             }
-            return /*user != null*/ false;
+            return user != null;
         }
 
         public User GetUser(int id)
