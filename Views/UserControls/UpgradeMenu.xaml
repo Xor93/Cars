@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="Cars.Views.UserControls.UpgradeMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             Width="auto" Height="auto"
+             d:DesignHeight="450" d:DesignWidth="800"
+             DataContext="{Binding UpgradeMenu, Source={StaticResource Locator}}">
+
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="UPGRADE :  " FontSize="30" Margin="0,10" VerticalAlignment="Bottom"/>
+                <TextBlock Text="{Binding Selected_OpenCar.CarId.Title}" FontSize="30" Margin="0,10" VerticalAlignment="Bottom"/>
+            </StackPanel>
+
+            <WrapPanel Orientation="Horizontal">
+
+                <StackPanel Margin="10,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Text="{Binding Selected_OpenCar.MotorLvl,StringFormat=Motor :  {0}}" FontSize="15" Margin="0,3"/>
+                    </StackPanel>
+                    <Button Command="{Binding Up_MotorLvl}" Width="140" Height="180">
+                        <Button.Style>
+                            <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                                <Style.Triggers>                  
+                                    <DataTrigger Binding="{Binding MotorPriceValid}" Value="false">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding MotorPriceValid}" Value="true">
+                                        <Setter Property="IsEnabled" Value="true"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <TextBlock Text="{Binding Selected_OpenCar.CarId.MotorPrice, StringFormat=Upgrade :  {0}}"/>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Margin="10,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock x:Name="Transmission" Text="{Binding Selected_OpenCar.TransmissionLvl,StringFormat=Transmission :  {0}}" FontSize="15" Margin="0,3"/>
+                    </StackPanel>
+                    <Button Command="{Binding Up_TransmissionLvl}" Width="140" Height="180">
+                        <Button.Style>
+                            <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Selected_OpenCar.TransmissionLvl}" Value="20">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding TransmissionPriceValid}" Value="false">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding TransmissionPriceValid}" Value="true">
+                                        <Setter Property="IsEnabled" Value="true"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <TextBlock  Text="{Binding Selected_OpenCar.CarId.TransmissionPrice, StringFormat=Upgrade :  {0}}"/>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Margin="10,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Text="{Binding Selected_OpenCar.ClutchLvl,StringFormat=Clutch :  {0}}" FontSize="15" Margin="0,3"/>
+                    </StackPanel>
+                    <Button Command="{Binding Up_ClutchLvl}" Width="140" Height="180">
+                        <Button.Style>
+                            <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Selected_OpenCar.ClutchLvl}" Value="20">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ClutchPriceValid}" Value="false">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ClutchPriceValid}" Value="true">
+                                        <Setter Property="IsEnabled" Value="true"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <TextBlock Text="{Binding Selected_OpenCar.CarId.ClutchPrice, StringFormat=Upgrade :  {0}}"/>
+                    </Button>
+                </StackPanel>
+
+                <StackPanel Margin="10,0">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                        <TextBlock Text="{Binding Selected_OpenCar.TankСapacityLvl,StringFormat=Tank :  {0}}" FontSize="15" Margin="0,3"/>
+                    </StackPanel>
+                    <Button Command="{Binding Up_TankLvl}" Width="140" Height="180">
+                        <Button.Style>
+                            <Style BasedOn="{StaticResource MaterialDesignRaisedButton}" TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Selected_OpenCar.TankСapacityLvl}" Value="20">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding TankPriceValid}" Value="false">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding TankPriceValid}" Value="true">
+                                        <Setter Property="IsEnabled" Value="true"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                        <TextBlock Text="{Binding Selected_OpenCar.CarId.TankСapacityPrice, StringFormat=Upgrade :  {0}}"/>
+                    </Button>
+                </StackPanel>
+
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>
